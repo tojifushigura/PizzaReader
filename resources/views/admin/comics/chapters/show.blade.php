@@ -1,6 +1,6 @@
 @extends('admin.comics.information', ['fields' => \App\Models\Chapter::getFormFields(), 'is_chapter' => true])
 @section('card-title', 'Information about this chapter')
-@section('reader_url', $chapter->url)
+@section('reader_url', asset(substr($chapter->url, 1)))
 @section('destroy-message', 'Do you want to delete this chapter and its relative pages?')
 @section('form-action', route('admin.comics.chapters.destroy', ['comic' => $comic->id, 'chapter' => $chapter->id]))
 @section('list-title', 'Pages')
@@ -114,7 +114,7 @@
               <td>
                   <span class="size">{%=o.formatFileSize(file.size)%}</span>
               </td>
-              <td class="td-buttons pr-4">
+              <td class="td-buttons pe-4">
                   {% if (file.deleteUrl) { %}
                       <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                           <i class="fas fa-trash"></i>

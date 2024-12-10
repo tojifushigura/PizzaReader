@@ -35,6 +35,9 @@ mix.webpackConfig(() => {
           vue: "@vue/compat",
         }
       },
+      stats: {
+        children: true
+      },
     }
   })
 
@@ -68,12 +71,14 @@ mix.scripts([
 ], 'public/js/admin.js');
 
 mix.styles([
+    'resources/css/pizzareader.css',
     'resources/css/frontend.css',
     'resources/css/reader.css',
     'resources/css/dark.css',
 ], 'public/css/reader.css');
 
 mix.styles([
+    'resources/css/pizzareader.css',
     'node_modules/blueimp-file-upload/css/jquery.fileupload.css',
     'node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css',
     'resources/css/admin.css',
