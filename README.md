@@ -17,6 +17,7 @@ I made this reader publicly available in May 2023.
 Current available languages:
 - english
 - italian
+- russian
 
 To add other languages feel free to submit pull requests copying from [it.json](lang/it.json) and [it.js](resources/js/lang/it.js).  
 **Tip**: edit `APP_LOCALE` in your `.env` file to change the language.
