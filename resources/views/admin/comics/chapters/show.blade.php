@@ -1,9 +1,9 @@
 @extends('admin.comics.information', ['fields' => \App\Models\Chapter::getFormFields(), 'is_chapter' => true])
-@section('card-title', 'Information about this chapter')
+@section('card-title', __('Information about this chapter'))
 @section('reader_url', asset(substr($chapter->url, 1)))
-@section('destroy-message', 'Do you want to delete this chapter and its relative pages?')
+@section('destroy-message', __('Do you want to delete this chapter and its relative pages?'))
 @section('form-action', route('admin.comics.chapters.destroy', ['comic' => $comic->id, 'chapter' => $chapter->id]))
-@section('list-title', 'Pages')
+@section('list-title', __('Pages'))
 @section('list')
     <form id="fileupload" method="POST" enctype="multipart/form-data"
           action="{{ route('admin.comics.chapters.pages.store', ['comic' => $comic->slug, 'chapter' => $chapter->id]) }}">
