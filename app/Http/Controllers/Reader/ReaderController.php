@@ -221,16 +221,26 @@ class ReaderController extends Controller {
         $request->validate([
             'vote' => ['integer', 'min:1', 'max:5', 'required'],
         ]);
-        if (!isset($_COOKIE['vote_token']) || $_COOKIE['vote_token'] !== $request->vote_token) response()->json(['error' => 'missing or invalid vote_token'], 403);
+        if (!isset($_COOKIE['vote_token']) || $_COOKIE['vote_token'] !== $request->vote_token) {
+            return response()->json(['error' => 'missing or invalid vote_token'], 403);
+        }
         $ch = $this->explodeCh($language, $ch);
-        if (!$ch) response()->json(['error' => 'chapter not found'], 404);
+        if (!$ch) {
+            return response()->json(['error' => 'chapter not found'], 404);
+        }
 
         $comic = Comic::publicSlug($comic_slug);
-        if (!$comic) response()->json(['error' => 'comic not found'], 404);
+        if (!$comic) {
+            return response()->json(['error' => 'comic not found'], 404);
+        }
 
         $chapter = Chapter::publicFilterByCh($comic, $ch);
-        if (!$chapter) response()->json(['error' => 'chapter not found'], 404);
-        if (Chapter::isLicensed($chapter)) response()->json(['error' => 'chapter licensed'], 403);
+        if (!$chapter) {
+            return response()->json(['error' => 'chapter not found'], 404);
+        }
+        if (Chapter::isLicensed($chapter)) {
+            return response()->json(['error' => 'chapter licensed'], 403);
+        }
 
         $sum_inc;
         $count_inc;
