@@ -1,7 +1,7 @@
 @extends('partials.form.form', ['fields' => \App\Models\Comic::getFormFields()])
-@section('card-title', __('Add new comic'))
+@section('card-title', 'Add new comic')
 @section('form-action', route('admin.comics.store'))
-@section('choose-file', __('Choose file'))
+@section('choose-file', 'Choose file')
 @foreach(\App\Models\Comic::getFormFields() as $field)
     <?php
         if($field['type'] === 'input_checkbox'){

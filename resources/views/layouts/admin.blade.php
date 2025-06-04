@@ -67,14 +67,14 @@
                         <li class="nav-item">
                             <a class="nav-link{{ Route::is('admin.comics.*') ? ' active' : '' }}"
                                href="{{ route('admin.comics.index') }}">
-                                <span aria-hidden="true" title="{{ __('Comics') }}" class="fas fa-book fa-fw"></span> {{ __('Comics') }}
+                                <span aria-hidden="true" title="Comics" class="fas fa-book fa-fw"></span> Comics
                             </a>
                         </li>
                         @if(Auth::check() && Auth::user()->hasPermission('manager'))
                             <li class="nav-item">
                                 <a class="nav-link{{ Route::is('admin.users.*') ? ' active' : '' }}"
                                    href="{{ route('admin.users.index') }}">
-                                    <span aria-hidden="true" title="{{ __('Users') }}" class="fas fa-users-cog fa-fw"></span> {{ __('Users') }}
+                                    <span aria-hidden="true" title="Users" class="fas fa-users-cog fa-fw"></span> Users
                                 </a>
                             </li>
                         @endif
@@ -82,20 +82,20 @@
                             <li class="nav-item">
                                 <a class="nav-link{{ Route::is('admin.teams.*') ? ' active' : '' }}"
                                    href="{{ route('admin.teams.index') }}">
-                                    <span aria-hidden="true" title="{{ __('Teams') }}" class="fas fa-users fa-fw"></span> {{ __('Teams') }}
+                                    <span aria-hidden="true" title="Teams" class="fas fa-users fa-fw"></span> Teams
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link{{ Route::is('admin.settings.*') ? ' active' : '' }}"
                                    href="{{ route('admin.settings.edit') }}">
-                                    <span aria-hidden="true" title="{{ __('Settings') }}" class="fas fa-cog fa-fw"></span> {{ __('Settings') }}
+                                    <span aria-hidden="true" title="Settings" class="fas fa-cog fa-fw"></span> Settings
                                 </a>
                             </li>
                         @endif
                         <li class="nav-item">
                             <a class="nav-link"
                                href="{{ route('home') }}" target="_blank">
-                                <span aria-hidden="true" title="{{ __('Reader') }}" class="fas fa-book-open fa-fw"></span> {{ __('Reader') }}
+                                <span aria-hidden="true" title="Reader" class="fas fa-book-open fa-fw"></span> Reader
                             </a>
                         </li>
                     </ul>
@@ -106,7 +106,7 @@
                             <div class="form-check form-switch p-2 ms-4">
                                 <input class="form-check-input" type="checkbox" id="dark-mode-switch"
                                     {{ isset($_COOKIE["dark"]) &&  $_COOKIE["dark"] ? "checked" : "" }}>
-                                <label class="form-check-label" for="dark-mode-switch">{{ __('Dark') }}</label>
+                                <label class="form-check-label" for="dark-mode-switch">Dark</label>
                             </div>
                         </li>
                         <!-- Authentication Links -->
@@ -128,11 +128,11 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if(Auth::user()->hasPermission('checker'))
                                         <a class="dropdown-item" href="{{ route('admin.comics.index') }}">
-                                            <span aria-hidden="true" title="{{ __('Admin panel') }}" class="fas fa-wrench fa-fw"></span> {{ __('Admin panel') }}
+                                            <span aria-hidden="true" title="Admin panel" class="fas fa-wrench fa-fw"></span> Admin panel
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('user.edit') }}">
-                                        <span aria-hidden="true" title="{{ __('Edit profile') }}" class="fas fa-user fa-fw"></span> {{ __('Edit profile') }}
+                                        <span aria-hidden="true" title="Profile" class="fas fa-user fa-fw"></span> Edit profile
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
