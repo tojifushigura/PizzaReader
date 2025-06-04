@@ -109,6 +109,12 @@
                                 <label class="form-check-label" for="dark-mode-switch">Dark</label>
                             </div>
                         </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <select id="locale-switch" class="form-select form-select-sm ms-2">
+                                <option value="en" {{ App::currentLocale() === 'en' ? 'selected' : '' }}>EN</option>
+                                <option value="ru" {{ App::currentLocale() === 'ru' ? 'selected' : '' }}>RU</option>
+                            </select>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

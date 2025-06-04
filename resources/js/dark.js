@@ -9,6 +9,10 @@ $(function(){
             body.attr("data-bs-theme", "light");
         }
     });
+    $("#locale-switch").on("change", function() {
+        setCookie("locale", $(this).val(), 3650);
+        location.reload();
+    });
 });
 
 function setCookie(cname, cvalue, exdays) {
