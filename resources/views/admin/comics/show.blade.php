@@ -1,11 +1,11 @@
 @extends('admin.comics.information', ['fields' => \App\Models\Comic::getFormFields(), 'is_chapter' => false])
-@section('card-title', 'Information about this comic')
+@section('card-title', __('Information about this comic'))
 @section('reader_url', asset(substr($comic->url, 1)))
-@section('destroy-message', 'Do you want to delete this comic and its relative chapters?')
+@section('destroy-message', __('Do you want to delete this comic and its relative chapters?'))
 @section('form-action', route('admin.comics.destroy', $comic->id))
-@section('list-title', 'Chapters')
+@section('list-title', __('Chapters'))
 @section('list-buttons')
-    <a href="{{ route('admin.comics.chapters.create', $comic->slug) }}" class="btn btn-success ms-3">Add chapter</a>
+    <a href="{{ route('admin.comics.chapters.create', $comic->slug) }}" class="btn btn-success ms-3">{{ __('Add chapter') }}</a>
 @endsection
 @section('list')
     <div class="list">
@@ -21,7 +21,7 @@
                     <span class="small">
                         @if(Auth::user()->hasPermission("manager"))
                             <a href="{{ route('admin.comics.chapters.destroy', ['comic' => $comic->id, 'chapter' => $chapter->id]) }}"
-                                data-bs-toggle="modal" data-bs-target="#modal-container" data-description="Do you want to delete this chapter and its relative pages?" data-form="destroy-chapter-form-{{ $chapter->id }}">Delete chapter</a>
+                                data-bs-toggle="modal" data-bs-target="#modal-container" data-description="{{ __('Do you want to delete this chapter and its relative pages?') }}" data-form="destroy-chapter-form-{{ $chapter->id }}">{{ __('Delete chapter') }}</a>
                             <form id="destroy-chapter-form-{{ $chapter->id }}" action="{{ route('admin.comics.chapters.destroy', ['comic' => $comic->id, 'chapter' => $chapter->id]) }}"
                                   method="POST" class="d-none">
                                 @csrf
@@ -29,7 +29,7 @@
                             </form>
                             <span class="spacer">|</span>
                         @endif
-                        <a href="{{ asset(substr(\App\Models\Chapter::getUrl($comic, $chapter), 1)) }}">Read</a>
+                        <a href="{{ asset(substr(\App\Models\Chapter::getUrl($comic, $chapter), 1)) }}">{{ __('Read') }}</a>
                     </span>
                 </div>
                 <span class="rounded flag flag-{{ $chapter->language }}"></span>

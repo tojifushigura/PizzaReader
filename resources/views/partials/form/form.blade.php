@@ -17,7 +17,7 @@
                     @include('partials.form.' . $field['type'], $field['parameters'])
                 @endforeach
                 <div class="d-grid gap-2 max-auto">
-                    <button type="submit" id="submit" class="btn btn-lg btn-success">Save</button>
+                    <button type="submit" id="submit" class="btn btn-lg btn-success">{{ __('Save') }}</button>
                 </div>
             </form>
         </div>

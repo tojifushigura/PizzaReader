@@ -5,21 +5,21 @@
             <div class="row">
                 <div class="col-12">
                     <h3 class="mt-1 float-sm-start">@yield('card-title')</h3>
-                    <a href="@yield('reader_url')" target="_blank" class="btn btn-success ms-sm-3">Read</a>
+                    <a href="@yield('reader_url')" target="_blank" class="btn btn-success ms-sm-3">{{ __('Read') }}</a>
                     @if(!$is_chapter)
-                    <a href="{{ route('admin.comics.stats', $comic->slug) }}" class="btn btn-info text-white ms-1">Stats</a>
+                    <a href="{{ route('admin.comics.stats', $comic->slug) }}" class="btn btn-info text-white ms-1">{{ __('Stats') }}</a>
                     @else
-                    <a href="{{ route('admin.comics.chapters.edit', ['comic' => $comic->slug, 'chapter' => $chapter->id]) }}" class="btn btn-success ms-1">Edit</a>
+                    <a href="{{ route('admin.comics.chapters.edit', ['comic' => $comic->slug, 'chapter' => $chapter->id]) }}" class="btn btn-success ms-1">{{ __('Edit') }}</a>
                     @if(config('settings.cache_proxy_enabled'))
-                    <button class="btn btn-warning ms-1" onclick="purgeChapter('@yield('reader_url')')">Purge cache</button>
+                    <button class="btn btn-warning ms-1" onclick="purgeChapter('@yield('reader_url')')">{{ __('Purge cache') }}</button>
                     @endif
                     @endif
                     @if(Auth::user()->hasPermission("manager"))
                         @if(!$is_chapter)
-                        <a href="{{ route('admin.comics.edit', $comic->slug) }}" class="btn btn-success ms-1">Edit</a>
+                        <a href="{{ route('admin.comics.edit', $comic->slug) }}" class="btn btn-success ms-1">{{ __('Edit') }}</a>
                         @endif
                         <a href="@yield('form-action')" class="btn btn-danger ms-1"
-                            data-bs-toggle="modal" data-bs-target="#modal-container" data-description="@yield('destroy-message')" data-form="destroy-form">Delete</a>
+                            data-bs-toggle="modal" data-bs-target="#modal-container" data-description="@yield('destroy-message')" data-form="destroy-form">{{ __('Delete') }}</a>
                         <form id="destroy-form" action="@yield('form-action')"
                               method="POST" class="d-none">
                             @csrf
@@ -28,7 +28,7 @@
                     @endif
                     @if($is_chapter)
                     <a href="{{ asset('api' . \App\Models\Chapter::getChapterDownload($comic, $chapter)) }}" class="float-end">
-                        <span title="Direct download" class="fa fa-download fa-2x pt-1"></span>
+                        <span title="{{ __('Direct download') }}" class="fa fa-download fa-2x pt-1"></span>
                     </a>
                     @endif
                 </div>
@@ -41,12 +41,12 @@
                     <div class="mb-3 @if(!(($field['type'] === 'input_file' || $field['type'] === 'textarea') && $value))d-flex @endif">
                         <label for="{{ $field['parameters']['field'] }}" class="fw-bold">{{ $field['parameters']['label'] }}:</label>
                         <div class="ms-2">
-                            @if($field['type'] === 'input_checkbox') <span>{{ $value ? "Yes" : "No" }}</span>
+                            @if($field['type'] === 'input_checkbox') <span>{{ $value ? __('Yes') : __('No') }}</span>
                             @elseif($field['type'] === 'input_file' && $value) <img src="{{ \App\Models\Comic::getThumbnailUrl($comic) }}" class="img-thumbnail thumbnail">
-                            @elseif($field['type'] === 'select') <span>{{ !is_int($value) && $value !== null ? $value : ($value > 0 ? getNameFromId($field['parameters']['options']->toArray(), $value) : 'N/A') }}</span>
-                            @elseif($field['type'] === 'textarea') <span class="text-pre">{{ $value ?? 'N/A' }}</span>
-                            @elseif($field['type'] === 'input_datetime_local') <span class="convert-timezone">{{ $value ?? 'N/A' }}</span>
-                            @else <span>{{ $value ?? 'N/A' }}</span>
+                            @elseif($field['type'] === 'select') <span>{{ !is_int($value) && $value !== null ? $value : ($value > 0 ? getNameFromId($field['parameters']['options']->toArray(), $value) : __('N/A')) }}</span>
+                            @elseif($field['type'] === 'textarea') <span class="text-pre">{{ $value ?? __('N/A') }}</span>
+                            @elseif($field['type'] === 'input_datetime_local') <span class="convert-timezone">{{ $value ?? __('N/A') }}</span>
+                            @else <span>{{ $value ?? __('N/A') }}</span>
                             @endif
                         </div>
                     </div>

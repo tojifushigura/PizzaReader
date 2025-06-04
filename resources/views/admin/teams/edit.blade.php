@@ -4,7 +4,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="mt-1 float-start">{{ isset($team) ? 'Edit team' : 'Create team' }}</h3>
+                    <h3 class="mt-1 float-start">{{ isset($team) ? __('Edit team') : __('Create team') }}</h3>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="d-grid gap-2 max-auto">
-                    <button type="submit" id="submit" class="btn btn-lg btn-success">Save</button>
+                    <button type="submit" id="submit" class="btn btn-lg btn-success">{{ __('Save') }}</button>
                 </div>
             </form>
         </div>
