@@ -1,9 +1,3 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a//dev/null b/indstall.md
-index 0000000000000000000000000000000000000000..ba4376d687afdbe6c319fb7c08fcf35b3afb26d8 100644
---- a//dev/null
-+++ b/indstall.md
-@@ -0,0 +1,137 @@
 # Инструкция по установке и настройке PizzaReader
 
 В этом документе описаны шаги по установке сервера и самого приложения. Инструкция рассчитана на начинающих пользователей.
