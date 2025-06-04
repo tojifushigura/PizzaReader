@@ -4,7 +4,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-9 col-6">
-                    <h3 class="mt-1 float-start">{{ __('Users') }}</h3>
+                    <h3 class="mt-1 float-start">Users</h3>
                 </div>
                 <div class="col-sm-3 col-6">
                     @include('partials.card-search')
@@ -13,11 +13,11 @@
         </div>
         <div class="card-body">
             <div class="row border-bottom py-1 d-none d-md-flex">
-                <div class="col-md-3 text-start">{{ __('Name') }}</div>
-                <div class="col-md-3 text-start">{{ __('Email') }}</div>
-                <div class="col-md-2 text-start">{{ __('Last login') }}</div>
-                <div class="col text-start pe-0">{{ __('Change role') }}</div>
-                <div class="col-auto text-end ps-1">{{ __('Options') }}</div>
+                <div class="col-md-3 text-start">Name</div>
+                <div class="col-md-3 text-start">Email</div>
+                <div class="col-md-2 text-start">Last login</div>
+                <div class="col text-start pe-0">Change role</div>
+                <div class="col-auto text-end ps-1">Options</div>
             </div>
             @foreach($users as $user)
                 <div class="row flex-md-nowrap text-truncate border-bottom py-1 item users">
@@ -43,12 +43,12 @@
                         @if(Auth::user()->hasPermission('manager') && !$user->hasPermission('manager'))
                              <button href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-assign"
                                 data-user-id="{{ $user->id }}" data-user-name="{{ $user->name }}" data-user-all-comics="{{ $user->all_comics }}" data-comics="{{ base64_encode(json_encode($user->comicsMinimal)) }}"
-                             >{{ __('Assign') }}</button>
+                             >Assign</button>
                         @else
-                            <a href="#" class="btn btn-secondary" title="You can't assign this user" onclick="event.preventDefault()">{{ __('Assign') }}</a>
+                            <a href="#" class="btn btn-secondary" title="You can't assign this user" onclick="event.preventDefault()">Assign</a>
                         @endif
                         @if((Auth::user()->hasPermission('admin') || Auth::user()->id === $user->id) && ($user->id !== 1 || Auth::user()->id === 1))
-                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success">{{ __('Edit') }}</a>
+                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success">Edit</a>
                         @else
                             <a href="#" class="btn btn-secondary" title="You can't edit this user" onclick="event.preventDefault()">Edit</a>
                         @endif
@@ -61,7 +61,7 @@
                                 @method('DELETE')
                             </form>
                             <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger"
-                                data-bs-toggle="modal" data-bs-target="#modal-container" data-description="{{ __('Do you want to delete') }} {{ $user->name }}?" data-form="delete-{{ $user->id }}">{{ __('Delete') }}</a>
+                                data-bs-toggle="modal" data-bs-target="#modal-container" data-description="Do you want to delete {{ $user->name }}?" data-form="delete-{{ $user->id }}">Delete</a>
                         @endif
                     </div>
                 </div>
@@ -74,23 +74,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 id="modal-assign-comics">{{ __('Assign comics') }}</h4>
+                    <h4 id="modal-assign-comics">Assign comics</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="all_comics">
-                        <label class="form-check-label" for="all_comics">{{ __('Assign all comics') }}</label><br>
-                        <small>{{ __('If checked, the list below is not used') }}</small>
+                        <label class="form-check-label" for="all_comics">Assign all comics</label><br>
+                        <small>If checked, the list below is not used</small>
                     </div>
-                    <input id="comic-search" type="search" placeholder="{{ __('Search comic') }}" aria-label="{{ __('Search comic') }}"
+                    <input id="comic-search" type="search" placeholder="Search comic" aria-label="Search comic"
                            name="search" class="form-control me-sm-2" autocomplete="off">
                     <div id="results-box" style="display: none"></div>
                 </div>
                 <div id="assigned-comics" class="modal-body">
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" onclick="assignComics()">{{ __('Update') }}</button>
+                    <button class="btn btn-success" onclick="assignComics()">Update</button>
                 </div>
             </div>
         </div>
